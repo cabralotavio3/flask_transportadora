@@ -63,7 +63,7 @@ def usuario_remove(id_transportadora):
         flash('Houve um erro.')
         return redirect('/Transportadora')
     
-@app.route('/Transportadora/edita/<int:id>')
+@app.route('/Transportadora/edita/<int:id_transportadora>')
 def usuario_edita(id_transportadora):
         usuario_transportadora = Transportadora.query.get(id_transportadora)
         return render_template('transportadora_edita.html', dados_html=usuario_transportadora)
