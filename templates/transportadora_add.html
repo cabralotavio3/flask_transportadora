@@ -11,12 +11,13 @@
 </div>
 {% endif %}
     
-   <form action="/usuario/save" method="post">
+   <form action="/Transportadora/save" method="post">
+      <label for="nome">Nome: </label>
         <input type="text" name="nome" id="nome" >
         <label for="email">Contato: </label>
         <input type="email" name="email" id="email">
-        <label for="regiao">Região de Atuação: </label>
-        <input type="text" name="regiao" id="regiao">
+        <label for="regiao_atuacao">Região de Atuação: </label>
+        <input type="text" name="regiao_atuacao" id="regiao_atuacao">
         <button type="submit">Salvar</button>
     </form>
 

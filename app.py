@@ -9,7 +9,7 @@
 from flask import Flask, render_template, request, flash, redirect
 from database import db
 from flask_migrate import Migrate
-from models import Usuario
+from models import Transportadora
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '123'
@@ -26,65 +26,65 @@ migrate = Migrate(app, db)
 def index():
     return render_template('index.html')
 
-@app.route('/usuario')
+@app.route('/Transportadora')
 def Transportadoras():
-    u = Usuario.query.all()
-    return render_template('usuario_lista.html', dados_html = u)
+    u = Transportadora.query.all()
+    return render_template('transportadora_lista.html', dados_html = u)
 
-@app.route('/usuario/add')
+@app.route('/Transportadora/add')
 def usuario_add():
-    u = Usuario.query.all()
-    return render_template('usuario_add.html', dados_html = u)
+    u = Transportadora.query.all()
+    return render_template('transportadora_add.html', dados_html = u)
 
-@app.route('/usuario/save', methods=['POST'])
+@app.route('/Transportadora/save', methods=['POST'])
 def usuario_save():
     nome = request.form.get('nome')
     contato = request.form.get('contato')
     regiao_atuacao = request.form.get('regiao_atuacao')
     if nome and contato and regiao_atuacao:
-        usuario = Usuario(nome, contato, regiao_atuacao)
-        db.session.add(usuario)
+        usuario_transportadora = Transportadora(nome, contato, regiao_atuacao)
+        db.session.add(usuario_transportadora)
         db.session.commit()
         flash('usuario cadastrado com sucesso!!')
-        return redirect('/usuario')
+        return redirect('/Transportadora')
     else:
         flash('preencha todos os campos!')
-        return redirect('/usuario/add')
+        return redirect('/Transportadora/add')
 
-@app.route('/usuario/remove/<int:id_transportadora>')
+@app.route('/Transportadora/remove/<int:id_transportadora>')
 def usuario_remove(id_transportadora):
     if id > 0:
-        usuario = Usuario.query.get(id_transportadora)
-        db.session.delete(usuario)
+        usuario_transportadora = Transportadora.query.get(id_transportadora)
+        db.session.delete(usuario_transportadora)
         db.session.commit()
         flash('Removido Com sucesso!!')
-        return redirect('/usuario')
+        return redirect('/Transportadora')
     else:
         flash('Houve um erro.')
-        return redirect('/usuario')
+        return redirect('/Transportadora')
     
-@app.route('/usuario/edita/<int:id>')
+@app.route('/Transportadora/edita/<int:id>')
 def usuario_edita(id_transportadora):
-        usuario = Usuario.query.get(id_transportadora)
-        return render_template('usuario_edita.html', dados_html=usuario)
+        usuario_transportadora = Transportadora.query.get(id_transportadora)
+        return render_template('transportadora_edita.html', dados_html=usuario_transportadora)
 
-@app.route('/usuario/editasave', methods = ['POST'])
-def usuario_editasave():
+@app.route('/Transportadora/editasave', methods = ['POST'])
+def transportadora_editasave():
     id_transportadora = request.form.get('id_transportadora')
     nome = request.form.get('nome')
-    email = request.form.get('email')
-    idade = request.form.get('idade')
-    if id_transportadora and nome and email and idade:
-        usuario = Usuario.query.get(id_transportadora)
-        usuario.nome = nome
-        usuario.email = email
-        usuario.idade = idade
+    contato = request.form.get('contato')
+    regiao_atuacao = request.form.get('regiao_atuacao')
+    if id_transportadora and nome and contato and regiao_atuacao:
+        usuario_transportadora = Transportadora.query.get(id_transportadora)
+        usuario_transportadora.nome = nome
+        usuario_transportadora.contato = contato
+        usuario_transportadora.regiao_atuacao = regiao_atuacao
         db.session.commit()
         flash('Dados atualizados com sucesso!!')
-        return redirect('/usuario')
+        return redirect('/Transportadora')
     else:
         flash('Está faltando dados!')
-        return redirect('/usuario')
+        return redirect('/Transportadora')
 @app.route
 def base():
     return render_template('base.html')

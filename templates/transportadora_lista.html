@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    <a href="/Transportadora/add">+ Adicionar</a>
+    <table>
+        <tr>
+            <th>Nome:   </th>
+            <th>Contato:  </th>
+            <th>Região de Atuação:  </th>
+            <th>Editar: </th>
+            <th>Remover:</th>
+        </tr>
+         {% for Transportadora in dados_html %}
+            <tr>
+                <td>{{Transportadora.nome}}</td>
+                <td>{{Transportadora.contato}}</td>
+                <td>{{Transportadora.regiao_atuacao}}</td>
+                <td>
+                    <a class="editar"href="/Transportadora/edita/{{Transportadora.id_transportadora}}">Editar</a>
+                </td>
+                <td>
+                    <a class="remover"href="/Trasportadora/remove/{{Transportadora.id_transportadora}}">Remover</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
