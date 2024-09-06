@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    <a href="/usuario/add">+ Adicionar</a>
+    <table>
+        <tr>
+            <th>Nome:   </th>
+            <th>Contato:  </th>
+            <th>Região de Atuação:  </th>
+            <th>Editar: </th>
+            <th>Remover:</th>
+        </tr>
+         {% for usuario in dados_html %}
+            <tr>
+                <td>{{usuario.nome}}</td>
+                <td>{{usuario.contato}}</td>
+                <td>{{usuario.regiao_atuacao}}</td>
+                <td>
+                    <a class="editar"href="/usuario/edita/{{usuario.id_transportadora}}">Editar</a>
+                </td>
+                <td>
+                    <a class="remover"href="/usuario/remove/{{usuario.id_transportadora}}">Remover</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
