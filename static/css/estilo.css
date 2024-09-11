@@ -13,6 +13,16 @@ table, tr, td, th{
     border-collapse: collapse;
 }
 
+.index{
+    text-align: center;
+}
+.caminhao{
+    width: 60rem;
+}
+.menu{
+    text-decoration: blue;
+}
+
 .editar{
     color: yellow;
 }
