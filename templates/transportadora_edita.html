@@ -11,8 +11,8 @@
 </div>
 {% endif %}
     
-    <form action="/Transportadora/save" method="post">
-        <input type="hidden" name="id" id="id" value="{{dados_html.id_transportadora}}">
+    <form action="/Transportadora/editasave" method="post">
+        <input type="hidden" name="id_transportadora" id="id_transportadora" value="{{dados_html.id_transportadora}}">
         <label for="nome">Nome: </label>
         <input type="text" name="nome" id="nome" value="{{dados_html.nome}}">
         <label for="contato">Contato: </label>
