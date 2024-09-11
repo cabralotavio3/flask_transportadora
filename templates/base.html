@@ -7,16 +7,13 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/estilo.css')}}">
 </head>
 <body>
-    <nav class="menu">
-        <ul>
-            <li>
-                <h2><a href="/">MENU INICIAL</a></h2>
-            </li>
-            <li>
-                <h3><a href="/Transportadora">Transportadoras</a></h3>
-            </li>
-        </ul>
-    </nav>
+        <div>
+            <h1 class="titulo"><b>MENU FLASK DO CABRAL</b></h1>
+        </nav>
+        <div class="links">
+            <h2><a class="link" href="/">MENU INICIAL</a></h2>
+            <h2><a class="link" href="/Transportadora">TRANSPORTADORAS</a></h2>
+        </div>
     <main>
         {% block conteudo%}
         {% endblock %}
